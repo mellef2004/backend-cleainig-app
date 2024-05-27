@@ -31,14 +31,14 @@ function generateOTP() {
 const transporter = nodemailer.createTransport({
   service: "outlook",
   auth: {
-    user: "myapptest2024@outlook.com",
-    pass: "TESTTEST2024",
+    user: process.env.EMAIL,
+    pass:  process.env.PASSWORD,
   },
 });
 
 async function sendOTPEmail(email, otp) {
   const mailOptions = {
-    from: "myapptest2024@outlook.com",
+    from: process.env.EMAIL,
     to: email,
     subject: "Verify Your Email Adress",
     text: `Your one-time Password (OTP) is ${otp}`,
